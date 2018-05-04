@@ -6,7 +6,7 @@ server :
 spring:
     datasource:
         name: test
-        url: jdbc:mysql://119.23.228.136:3306/wordpress?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+        url: jdbc:mysql://127.0.0.1:3306/scyz?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
         username: root
         password: C4B70eb96770
         # 使用druid数据源
