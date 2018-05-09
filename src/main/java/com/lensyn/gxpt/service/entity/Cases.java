@@ -22,6 +22,8 @@ public class Cases {
 	private String height;
 
 	private String finishtime;
+	
+	private String scale;
 
 	public Integer getId() {
 		return id;
@@ -109,5 +111,13 @@ public class Cases {
 
 	public void setFinishtime(String finishtime) {
 		this.finishtime = finishtime == null ? null : finishtime.trim();
+	}
+
+	public String getScale() {
+		return scale;
+	}
+
+	public void setScale(String scale) {
+		this.scale = scale;
 	}
 }

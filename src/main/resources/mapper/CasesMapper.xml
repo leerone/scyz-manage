@@ -13,6 +13,7 @@
 		<result column="coverage" jdbcType="VARCHAR" property="coverage" />
 		<result column="height" jdbcType="VARCHAR" property="height" />
 		<result column="finishtime" jdbcType="VARCHAR" property="finishtime" />
+		<result column="scale" jdbcType="VARCHAR" property="scale" />
 	</resultMap>
 	<sql id="Example_Where_Clause">
 		<where>
