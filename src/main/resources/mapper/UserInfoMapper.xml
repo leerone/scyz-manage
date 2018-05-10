@@ -8,13 +8,9 @@
 
 	</resultMap>
 
-
-
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select * from user where id = #{id,jdbcType=INTEGER}
 	</select>
-
-
 
 </mapper>
