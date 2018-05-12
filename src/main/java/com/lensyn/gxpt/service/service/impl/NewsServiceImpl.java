@@ -22,8 +22,8 @@ public class NewsServiceImpl implements NewsService {
     private NewsMapper newsMapper;
 
 	@Override
-	public List<News> getNewsList() {
-		return newsMapper.getNewsList();
+	public List<News> getNewsList(String type) {
+		return newsMapper.getNewsList(type);
 	}
 
 	@Override

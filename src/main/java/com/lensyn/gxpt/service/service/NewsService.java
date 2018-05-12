@@ -9,7 +9,7 @@ import com.lensyn.gxpt.service.entity.News;
  */
 
 public interface NewsService {
-	List<News> getNewsList();
+	List<News> getNewsList(String type);
 	void insertNews(News news);
 	void delNews(String id);
 	void updateNews(News news);

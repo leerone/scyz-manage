@@ -3,13 +3,13 @@ package com.lensyn.gxpt.service.entity;
 public class News {
 	private Integer id;
 
-	private String name;
-
 	private String pic;
 
 	private String url;
 
 	private String type;
+
+	private String description;
 
 	private String title;
 
@@ -17,20 +17,20 @@ public class News {
 
 	private String content;
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name == null ? null : name.trim();
 	}
 
 	public String getPic() {

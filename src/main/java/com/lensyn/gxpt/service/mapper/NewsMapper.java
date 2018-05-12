@@ -6,7 +6,7 @@ import com.lensyn.gxpt.service.entity.News;
 
 public interface NewsMapper {
 
-	List<News> getNewsList();
+	List<News> getNewsList(String type);
 
 	void insertNews(News news);
 

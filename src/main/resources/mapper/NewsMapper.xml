@@ -3,10 +3,10 @@
 <mapper namespace="com.lensyn.gxpt.service.mapper.NewsMapper">
 	<resultMap id="BaseResultMap" type="com.lensyn.gxpt.service.entity.News">
 		<id column="id" jdbcType="INTEGER" property="id" />
-		<result column="name" jdbcType="VARCHAR" property="name" />
 		<result column="pic" jdbcType="VARCHAR" property="pic" />
 		<result column="url" jdbcType="VARCHAR" property="url" />
 		<result column="type" jdbcType="VARCHAR" property="type" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
 		<result column="title" jdbcType="VARCHAR" property="title" />
 		<result column="time" jdbcType="VARCHAR" property="time" />
 		<result column="content" jdbcType="VARCHAR" property="content" />
@@ -15,13 +15,15 @@
 
 	<select id="getNewsList" resultMap="BaseResultMap">
 		select * from news
+		
+		　　<if test="_parameter != null and _parameter != '' ">
+		　　　where　type = #{type}
+		　　</if>
 	</select>
 
-	<insert id="insertNews" parameterType="com.lensyn.gxpt.service.entity.News">
-		insert into news (name,
-		pic, url, type, title, time, content) VALUES (#{name}, #{pic}, #{url}, #{type},
-		#{
-		title}, #{time}, #{content})
+	<insert id="insertNews" parameterType="com.lensyn.gxpt.service.entity.News" useGeneratedKeys="true" keyProperty="id">
+		insert into news (pic, url, description, type, title, time, content) 
+		VALUES ( #{pic}, #{url},#{description}, #{type}, #{title}, #{time}, #{content})
 	</insert>
 	
 	<select id="delNews" parameterType="java.lang.String">
