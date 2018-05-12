@@ -3,6 +3,7 @@ package com.lensyn.gxpt.service.service.impl;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,8 @@ public class NewsServiceImpl implements NewsService {
     private NewsMapper newsMapper;
 
 	@Override
-	public List<News> getNewsList(String type) {
-		return newsMapper.getNewsList(type);
+	public List<News> getNewsList(Map map) {
+		return newsMapper.getNewsList(map);
 	}
 
 	@Override
@@ -32,12 +33,17 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public void delNews(String id) {
-		newsMapper.delNews(id);
+	public int delNews(String id) {
+		return newsMapper.delNews(id);
 	}
 
 	@Override
-	public void updateNews(News news) {
-		newsMapper.updateNews(news);
+	public int updateNews(News news) {
+		return newsMapper.updateNews(news);
+	}
+
+	@Override
+	public int getNewsCount(String type) {
+		return newsMapper.getNewsCount(type);
 	}
 }

@@ -1,17 +1,20 @@
 package com.lensyn.gxpt.service.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.lensyn.gxpt.service.entity.News;
 
 public interface NewsMapper {
 
-	List<News> getNewsList(String type);
+	List<News> getNewsList(Map map);
 
 	void insertNews(News news);
 
-	void delNews(String id);
+	int delNews(String id);
 
-	void updateNews(News news);
+	int updateNews(News news);
+	
+	int getNewsCount(String type);
 
 }

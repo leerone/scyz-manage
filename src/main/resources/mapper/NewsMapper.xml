@@ -10,24 +10,44 @@
 		<result column="title" jdbcType="VARCHAR" property="title" />
 		<result column="time" jdbcType="VARCHAR" property="time" />
 		<result column="content" jdbcType="VARCHAR" property="content" />
-		
+
 	</resultMap>
 
-	<select id="getNewsList" resultMap="BaseResultMap">
+	<select id="getNewsList" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
 		select * from news
-		
-		　　<if test="_parameter != null and _parameter != '' ">
-		　　　where　type = #{type}
-		　　</if>
+		<if test="_parameter.type != null and _parameter.type != '' ">
+			where
+			type = #{type}
+		</if>
+		limit #{page},10
 	</select>
 
-	<insert id="insertNews" parameterType="com.lensyn.gxpt.service.entity.News" useGeneratedKeys="true" keyProperty="id">
-		insert into news (pic, url, description, type, title, time, content) 
-		VALUES ( #{pic}, #{url},#{description}, #{type}, #{title}, #{time}, #{content})
-	</insert>
-	
-	<select id="delNews" parameterType="java.lang.String">
-		delete from news where id = #{id}
+	<select id="getNewsCount" resultType="java.lang.Integer">
+		select count(1) from news
+		<if test="_parameter != null and _parameter != '' ">
+			where type = #{type}
+		</if>
 	</select>
+
+	<insert id="insertNews" parameterType="com.lensyn.gxpt.service.entity.News"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into news (pic, url,
+		description, type, title, time, content)
+		VALUES ( #{pic},
+		#{url},#{description}, #{type}, #{title}, #{time},
+		#{content})
+	</insert>
+
+	<delete id="delNews" parameterType="java.lang.String">
+		delete from news where id =
+		#{id}
+	</delete>
+
+	<update id="updateNews" parameterType="com.lensyn.gxpt.service.entity.News">
+		update news set
+		type=#{type}, title=#{title}, time=#{time}, content=#{content},
+		description=#{description} where id = #{id}
+	</update>
 
 </mapper>
