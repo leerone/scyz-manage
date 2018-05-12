@@ -17,6 +17,7 @@ public class NewsCtrl {
 	
 	@RequestMapping(value = "/getNewsList")
 	public List<News> getNewsList() {
+		System.out.println("请求到远程服务器!");
 		return newsService.getNewsList();
 	}
 	

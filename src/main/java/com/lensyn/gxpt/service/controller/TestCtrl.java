@@ -18,7 +18,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.lensyn.gxpt.service.entity.UserInfo;
 import com.lensyn.gxpt.service.mapper.UserInfoMapper;
-import com.lensyn.gxpt.service.service.RedisService;
 
 /**
  */
@@ -26,8 +25,6 @@ import com.lensyn.gxpt.service.service.RedisService;
 @RequestMapping(value = "/test")
 public class TestCtrl {
 
-	@Autowired
-	private RedisService redisService;
 
 	@Autowired
 	private UserInfoMapper userInfoMapper;
@@ -35,37 +32,6 @@ public class TestCtrl {
 	@RequestMapping(value = "/index")
 	public String index() {
 		return "hello world";
-	}
-
-	/**
-	 * 向redis存储值
-	 * 
-	 * @param key
-	 * @param value
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping("/set")
-	public String set(String key, String value) throws Exception {
-
-		redisService.set(key, value);
-		return "success";
-	}
-
-	/**
-	 * 获取redis中的值
-	 * 
-	 * @param key
-	 * @return
-	 */
-	@RequestMapping("/get")
-	public String get(String key) {
-		try {
-			return redisService.get(key);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";
 	}
 
 	/**
