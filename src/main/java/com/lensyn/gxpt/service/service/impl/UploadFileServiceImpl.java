@@ -3,11 +3,13 @@ package com.lensyn.gxpt.service.service.impl;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lensyn.gxpt.service.entity.Case;
 import com.lensyn.gxpt.service.entity.UploadFile;
 import com.lensyn.gxpt.service.mapper.UploadFileMapper;
 import com.lensyn.gxpt.service.service.UploadFileService;
@@ -34,5 +36,10 @@ public class UploadFileServiceImpl implements UploadFileService {
 	@Override
 	public int updateUploadFile(UploadFile file) {
 		return uploadFileMapper.updateUploadFile(file);
+	}
+
+	@Override
+	public List<UploadFile> getNotImageFileList(Map map) {
+		return uploadFileMapper.getNotImageFileList(map);
 	}
 }

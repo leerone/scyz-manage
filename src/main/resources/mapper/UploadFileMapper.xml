@@ -5,14 +5,22 @@
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="url" property="url" jdbcType="VARCHAR" />
-		<result column="type" property="url" jdbcType="VARCHAR" />
-		<result column="fid" property="url" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="fid" property="fid" jdbcType="VARCHAR" />
 
 	</resultMap>
 
 	<select id="getFileList" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select * from file where fid = #{fid,jdbcType=INTEGER}
+	</select>
+	
+	<select id="getNotImageFileList" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select * from file
+		where
+		type = #{type}
+		limit #{page},10
 	</select>
 	
 	<insert id="insertUploadFile" 

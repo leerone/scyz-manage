@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +30,14 @@ public class UploadFileCtrl {
 	
 	@Autowired
 	private UploadFileService uploadFileService;
+	
+	@RequestMapping(value = "/getNotImageFileList")
+	public List<UploadFile> getNotImageFileList(String type,Integer page) {
+		Map map = new HashMap();
+		map.put("page", page-1);
+		map.put("type", "notimage");
+		return uploadFileService.getNotImageFileList(map);
+	}
 
 	@RequestMapping("/uploadimage")
 	public String postFile(HttpServletRequest request, HttpServletResponse response) throws FileNotFoundException {
@@ -109,6 +120,7 @@ public class UploadFileCtrl {
 								UploadFile uploadFile = new UploadFile();
 								uploadFile.setName(tempname);
 								uploadFile.setUrl(url+tempname);
+								uploadFile.setType("notimage");
 								uploadFileService.insertUploadFile(uploadFile);
 								// 拿到文件，存储
 								// result = "success";

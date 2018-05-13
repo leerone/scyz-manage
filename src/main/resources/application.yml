@@ -12,8 +12,8 @@ spring:
         static-locations: classpath:static/
     datasource:
         name: test
-        #url: jdbc:mysql://47.106.177.128:3306/scyz?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
-        url: jdbc:mysql://localhost:3306/scyz?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+        url: jdbc:mysql://47.106.177.128:3306/scyz?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+        #url: jdbc:mysql://localhost:3306/scyz?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
         username: root
         password: root
         # 使用druid数据源
