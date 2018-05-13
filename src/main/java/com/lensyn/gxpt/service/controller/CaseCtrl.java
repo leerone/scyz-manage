@@ -10,14 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lensyn.gxpt.service.entity.Case;
-import com.lensyn.gxpt.service.entity.Hr;
+import com.lensyn.gxpt.service.entity.UploadFile;
 import com.lensyn.gxpt.service.service.CaseService;
+import com.lensyn.gxpt.service.service.UploadFileService;
 
 @RestController
 @RequestMapping(value = "/case")
 public class CaseCtrl {
 	@Autowired
 	private CaseService caseService;
+	
+	@Autowired
+	private UploadFileService uploadFileService;
 	
 	@RequestMapping(value = "/getCaseList")
 	public List<Case> getCasesList(String type,Integer page) {
@@ -32,6 +36,16 @@ public class CaseCtrl {
 		caseService.insertCase(cases);
 		Integer id = cases.getId();
 		if (id != null) {
+			System.out.println(cases.getUrl());
+			String type = cases.getType();
+			String[] urls = cases.getUrl().split(",");
+			UploadFile uploadFile = new UploadFile();
+			for (String name : urls) {
+				uploadFile.setFid(String.valueOf(id));
+				uploadFile.setType(type);
+				uploadFile.setName(name);
+				uploadFileService.updateUploadFile(uploadFile);
+			}
 			return "1";
 		} else {
 			return "0";

@@ -22,8 +22,8 @@
 
 	<update id="updateUploadFile" parameterType="com.lensyn.gxpt.service.entity.UploadFile">
 		update file set
-		name=#{name}, url=#{url}, type=#{type},
-		fid=#{fid} where id = #{id}
+		type=#{type},
+		fid=#{fid} where name = #{name}
 	</update>
 
 </mapper>

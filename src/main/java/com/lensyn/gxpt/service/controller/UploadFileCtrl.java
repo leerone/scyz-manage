@@ -32,7 +32,7 @@ public class UploadFileCtrl {
 	public String postFile(HttpServletRequest request, HttpServletResponse response) throws FileNotFoundException {
 		// String result = "error";
 		// Map<String, Object> map = new HashMap<String, Object>();
-		String result = "1";
+		String result = "";
 		try {
 			// 创建一个通用的多部分解析器
 			CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
@@ -55,9 +55,11 @@ public class UploadFileCtrl {
 							File file = new File(url,tempname);
 							try {
 								multipartFile.transferTo(file);
+								result = tempname;
 								UploadFile uploadFile = new UploadFile();
-								uploadFile.setName(fileName);
+								uploadFile.setName(tempname);
 								uploadFile.setUrl(url+tempname);
+								uploadFileService.insertUploadFile(uploadFile);
 								// 拿到文件，存储
 								// result = "success";
 							} catch (IllegalStateException | IOException e) {
@@ -103,9 +105,11 @@ public class UploadFileCtrl {
 							File file = new File(url,tempname);
 							try {
 								multipartFile.transferTo(file);
+								result = tempname;
 								UploadFile uploadFile = new UploadFile();
-								uploadFile.setName(fileName);
+								uploadFile.setName(tempname);
 								uploadFile.setUrl(url+tempname);
+								uploadFileService.insertUploadFile(uploadFile);
 								// 拿到文件，存储
 								// result = "success";
 							} catch (IllegalStateException | IOException e) {
