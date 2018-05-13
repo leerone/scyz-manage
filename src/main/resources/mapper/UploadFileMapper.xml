@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lensyn.gxpt.service.mapper.UploadFileMapper">
+	<resultMap id="BaseResultMap" type="com.lensyn.gxpt.service.entity.UploadFile">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="type" property="url" jdbcType="VARCHAR" />
+		<result column="fid" property="url" jdbcType="VARCHAR" />
+
+	</resultMap>
+
+	<select id="getFileList" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select * from file where fid = #{fid,jdbcType=INTEGER}
+	</select>
+	
+	<insert id="insertUploadFile" 
+		parameterType="com.lensyn.gxpt.service.entity.UploadFile" useGeneratedKeys="true" keyProperty="id">
+		insert into file (name,url,type,fid) values (#{name},#{url},#{type},#{fid})
+	</insert>
+
+	<update id="updateUploadFile" parameterType="com.lensyn.gxpt.service.entity.UploadFile">
+		update file set
+		name=#{name}, url=#{url}, type=#{type},
+		fid=#{fid} where id = #{id}
+	</update>
+
+</mapper>
