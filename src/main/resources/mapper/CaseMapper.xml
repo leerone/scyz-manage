@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lensyn.gxpt.service.mapper.CasesMapper">
-	<resultMap id="BaseResultMap" type="com.lensyn.gxpt.service.entity.Cases">
+<mapper namespace="com.lensyn.gxpt.service.mapper.CaseMapper">
+	<resultMap id="BaseResultMap" type="com.lensyn.gxpt.service.entity.Case">
 		<id column="id" jdbcType="INTEGER" property="id" />
 		<result column="name" jdbcType="VARCHAR" property="name" />
 		<result column="pic" jdbcType="VARCHAR" property="pic" />
@@ -16,19 +16,38 @@
 		<result column="scale" jdbcType="VARCHAR" property="scale" />
 	</resultMap>
 	
-	<select id="getCasesList" resultMap="BaseResultMap">
+	<select id="getCaseList" resultMap="BaseResultMap">
 		select * from cases
+		<if test="_parameter.type != null and _parameter.type != '' ">
+			where
+			type = #{type}
+		</if>
+		limit #{page}, 10
 	</select>
 
-	<insert id="insertNews" parameterType="com.lensyn.gxpt.service.entity.Cases">
+	<insert id="insertCase" parameterType="com.lensyn.gxpt.service.entity.Case" useGeneratedKeys="true" keyProperty="id">
 		insert into cases (name,
 		pic, url, type, address, content, location,coverage,height,finishtime,scale) VALUES (#{name}, #{pic}, #{url}, #{type},
 		#{
 		address}, #{content}, #{location}, #{coverage}, #{height}, #{finishtime}, #{scale})
 	</insert>
 	
-	<select id="delCases" parameterType="java.lang.String">
+	<delete id="delCase" parameterType="java.lang.String">
 		delete from cases where id = #{id}
+	</delete>
+	
+	<select id="getCaseCount" resultType="java.lang.Integer">
+		select count(1) from cases
+		<if test="_parameter != null and _parameter != '' ">
+			where type = #{type}
+		</if>
 	</select>
+	
+	<update id="updateCase" parameterType="com.lensyn.gxpt.service.entity.Case">
+		update cases set
+		name=#{name}, pic=#{pic}, url=#{url}, type=#{type},
+		address=#{
+		address}, content=#{content}, location=#{location}, coverage=#{coverage}, height=#{height}, finishtime=#{finishtime}, scale=#{scale} where id = #{id}
+	</update>
 	
 </mapper>

@@ -1,6 +1,5 @@
 package com.lensyn.gxpt.service.controller;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lensyn.gxpt.service.entity.Hr;
-import com.lensyn.gxpt.service.entity.News;
 import com.lensyn.gxpt.service.service.HrService;
 
 @RestController
@@ -23,7 +21,7 @@ public class HrCtrl {
 	@RequestMapping(value = "/getHrList")
 	public List<Hr> gethrList(String type,Integer page) {
 		Map map = new HashMap();
-		map.put("page", page);
+		map.put("page", page-1);
 		map.put("type", type);
 		return hrService.getHrList(map);
 	}

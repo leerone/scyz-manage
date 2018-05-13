@@ -1,6 +1,6 @@
 package com.lensyn.gxpt.service.entity;
 
-public class Cases {
+public class Case {
 	private Integer id;
 
 	private String name;
