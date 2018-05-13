@@ -4,10 +4,16 @@ server :
 
 #数据库配置
 spring:
+    mvc:
+        view:
+            prefix: /
+            suffix: .html
+    resources:
+        static-locations: classpath:static/,file:static/
     datasource:
         name: test
-        #url: jdbc:mysql://47.106.177.128:3306/scyz?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
-        url: jdbc:mysql://localhost:3306/scyz?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+        url: jdbc:mysql://47.106.177.128:3306/scyz?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+        #url: jdbc:mysql://localhost:3306/scyz?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
         username: root
         password: root
         # 使用druid数据源
@@ -26,6 +32,11 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
+        
+    http:
+        multipart:
+            maxFileSize: 50Mb  
+            maxRequestSize: 50Mb 
     
 mybatis:
   type-aliases-package: com.lensyn.gxpt.service.mapper
