@@ -7,24 +7,44 @@
 		<result column="url" jdbcType="VARCHAR" property="url" />
 		<result column="type" jdbcType="VARCHAR" property="type" />
 		<result column="address" jdbcType="VARCHAR" property="address" />
-		<result column="desc" jdbcType="VARCHAR" property="desc" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
 		<result column="number" jdbcType="VARCHAR" property="number" />
 		<result column="desc1" jdbcType="VARCHAR" property="desc1" />
 		<result column="desc2" jdbcType="VARCHAR" property="desc2" />
 	</resultMap>
-	
-	<select id="getHrList" resultMap="BaseResultMap">
+
+	<select id="getHrList" resultMap="BaseResultMap" parameterType="java.util.Map">
 		select * from hr
+		<if test="_parameter.type != null and _parameter.type != '' ">
+			where
+			type = #{type}
+		</if>
+		limit #{page}, 10
 	</select>
 
-	<insert id="insertHr" parameterType="com.lensyn.gxpt.service.entity.Hr">
+	<insert id="insertHr" parameterType="com.lensyn.gxpt.service.entity.Hr" useGeneratedKeys="true" keyProperty="id">
 		insert into hr (name,
-		 url, type, address, desc, number, desc1, desc2) VALUES (#{name}, #{url}, #{type},
-		#{address}, #{desc}, #{number}, #{desc1}, #{desc2})
+		url,
+		type, address, description, number, desc1, desc2) VALUES (#{name}, #{url},
+		#{type},
+		#{address}, #{description}, #{number}, #{desc1}, #{desc2})
 	</insert>
-	
-	<select id="delHr" parameterType="java.lang.String">
+
+	<delete id="delHr" parameterType="java.lang.String">
 		delete from hr where id = #{id}
+	</delete>
+	
+	<select id="getHrCount" resultType="java.lang.Integer">
+		select count(1) from hr
+		<if test="_parameter != null and _parameter != '' ">
+			where type = #{type}
+		</if>
 	</select>
 	
+	<update id="updateHr" parameterType="com.lensyn.gxpt.service.entity.Hr">
+		update hr set
+		name=#{name}, url=#{url}, type=#{type}, address=#{address},
+		description=#{description}, number=#{number},desc1=#{desc1},desc2=#{desc2} where id = #{id}
+	</update>
+
 </mapper>

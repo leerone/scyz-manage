@@ -11,7 +11,7 @@ public class Hr {
 
 	private String address;
 
-	private String desc;
+	private String description;
 
 	private String number;
 
@@ -59,12 +59,12 @@ public class Hr {
 		this.address = address == null ? null : address.trim();
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc == null ? null : desc.trim();
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getNumber() {

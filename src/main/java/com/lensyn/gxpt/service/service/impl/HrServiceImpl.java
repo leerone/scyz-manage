@@ -3,6 +3,7 @@ package com.lensyn.gxpt.service.service.impl;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,8 @@ public class HrServiceImpl implements HrService {
     private HrMapper hrMapper;
 
 	@Override
-	public List<Hr> getHrList() {
-		return hrMapper.getHrList();
+	public List<Hr> getHrList(Map map) {
+		return hrMapper.getHrList(map);
 	}
 
 	@Override
@@ -32,12 +33,17 @@ public class HrServiceImpl implements HrService {
 	}
 
 	@Override
-	public void delHr(String id) {
-		hrMapper.delHr(id);
+	public int delHr(String id) {
+		return hrMapper.delHr(id);
 	}
 
 	@Override
-	public void updateHr(Hr hr) {
-		hrMapper.updateHr(hr);
+	public int updateHr(Hr hr) {
+		return hrMapper.updateHr(hr);
+	}
+
+	@Override
+	public int getHrCount(String type) {
+		return hrMapper.getHrCount(type);
 	}
 }

@@ -33,7 +33,6 @@ public class NewsCtrl {
 		news.setTime(new Date().toLocaleString());
 		newsService.insertNews(news);
 		Integer id = news.getId();
-		System.out.println(id);
 		if (id != null) {
 			return "1";
 		} else {

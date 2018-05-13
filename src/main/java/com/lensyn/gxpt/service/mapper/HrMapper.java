@@ -1,17 +1,20 @@
 package com.lensyn.gxpt.service.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.lensyn.gxpt.service.entity.Hr;
 
 public interface HrMapper {
 
-	List<Hr> getHrList();
+	List<Hr> getHrList(Map map);
 
 	void insertHr(Hr hr);
 
-	void delHr(String id);
+	int delHr(String id);
 
-	void updateHr(Hr hr);
+	int updateHr(Hr hr);
+
+	int getHrCount(String type);
 
 }
