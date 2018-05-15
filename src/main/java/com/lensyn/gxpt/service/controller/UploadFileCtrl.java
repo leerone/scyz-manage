@@ -118,6 +118,7 @@ public class UploadFileCtrl {
 						// 取得当前上传文件的文件名称
 						String fileName = multipartFile.getOriginalFilename();
 						if (fileName.trim() != null && fileName.trim().length() > 0) {
+							
 							String url = "/usr/local/src/uploadfile/";
 							String tempname = new Date().getTime() + "=" + fileName;
 							File file = new File(url, tempname);
@@ -127,7 +128,7 @@ public class UploadFileCtrl {
 								UploadFile uploadFile = new UploadFile();
 								uploadFile.setName(tempname);
 								uploadFile.setUrl(url + tempname);
-								uploadFile.setType("notimage");
+								uploadFile.setType(fileName.split(".")[1]);
 								uploadFileService.insertUploadFile(uploadFile);
 								// 拿到文件，存储
 								// result = "success";
