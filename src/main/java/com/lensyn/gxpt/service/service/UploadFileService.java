@@ -4,7 +4,6 @@ package com.lensyn.gxpt.service.service;
 import java.util.List;
 import java.util.Map;
 
-import com.lensyn.gxpt.service.entity.Case;
 import com.lensyn.gxpt.service.entity.UploadFile;
 
 /**
@@ -16,4 +15,5 @@ public interface UploadFileService {
 	int updateUploadFile(UploadFile file);
 	List<UploadFile> getNotImageFileList(Map map);
 	int getFileCount(String type);
+	int delFile(String id);
 }

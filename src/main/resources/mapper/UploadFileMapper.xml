@@ -19,7 +19,7 @@
 		parameterType="java.util.Map">
 		select * from file
 		where
-		type = #{type}
+		type != 'jpg' and type != 'png'
 		limit #{page},10
 	</select>
 	
@@ -38,5 +38,10 @@
 		select count(1) from file
 		where type = #{type}
 	</select>
+	
+	<delete id="delFile" parameterType="java.lang.String">
+		delete from file where id =
+		#{id}
+	</delete>
 
 </mapper>

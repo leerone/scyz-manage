@@ -45,6 +45,11 @@ public class UploadFileCtrl {
 		map.put("type", "notimage");
 		return uploadFileService.getNotImageFileList(map);
 	}
+	
+	@RequestMapping(value = "/delFile")
+	public int delFile(String id) {
+		return uploadFileService.delFile(id);
+	}
 
 	@RequestMapping("/uploadimage")
 	public String postFile(HttpServletRequest request, HttpServletResponse response) throws FileNotFoundException {

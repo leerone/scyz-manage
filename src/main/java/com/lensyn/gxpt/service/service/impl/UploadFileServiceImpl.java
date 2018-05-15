@@ -48,4 +48,10 @@ public class UploadFileServiceImpl implements UploadFileService {
 		// TODO Auto-generated method stub
 		return uploadFileMapper.getFileCount(type);
 	}
+
+	@Override
+	public int delFile(String id) {
+		// TODO Auto-generated method stub
+		return uploadFileMapper.delFile(id);
+	}
 }

@@ -16,4 +16,6 @@ public interface UploadFileMapper {
 	List<UploadFile> getNotImageFileList(Map map);
 
 	int getFileCount(String type);
+
+	int delFile(String id);
 }
