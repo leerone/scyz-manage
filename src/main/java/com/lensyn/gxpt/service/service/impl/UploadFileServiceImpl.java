@@ -42,4 +42,10 @@ public class UploadFileServiceImpl implements UploadFileService {
 	public List<UploadFile> getNotImageFileList(Map map) {
 		return uploadFileMapper.getNotImageFileList(map);
 	}
+
+	@Override
+	public int getFileCount(String type) {
+		// TODO Auto-generated method stub
+		return uploadFileMapper.getFileCount(type);
+	}
 }

@@ -15,4 +15,5 @@ public interface UploadFileService {
 	int insertUploadFile(UploadFile file);
 	int updateUploadFile(UploadFile file);
 	List<UploadFile> getNotImageFileList(Map map);
+	int getFileCount(String type);
 }

@@ -28,7 +28,6 @@ public class UeditorCtrl {
 	@ResponseBody
 	public String exec(HttpServletRequest request) throws UnsupportedEncodingException, JSONException{ 
 		request.setCharacterEncoding("utf-8");
-		System.out.println("exec");
 		String rootPath = request.getRealPath("/");
 		return new ActionEnter( request, rootPath ).exec();
 	}
