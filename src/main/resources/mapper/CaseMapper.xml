@@ -4,6 +4,8 @@
 	<resultMap id="BaseResultMap" type="com.lensyn.gxpt.service.entity.Case">
 		<id column="id" jdbcType="INTEGER" property="id" />
 		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="subtitle" jdbcType="VARCHAR" property="subtitle" />
 		<result column="pic" jdbcType="VARCHAR" property="pic" />
 		<result column="url" jdbcType="VARCHAR" property="url" />
 		<result column="type" jdbcType="VARCHAR" property="type" />
@@ -14,6 +16,7 @@
 		<result column="height" jdbcType="VARCHAR" property="height" />
 		<result column="finishtime" jdbcType="VARCHAR" property="finishtime" />
 		<result column="scale" jdbcType="VARCHAR" property="scale" />
+		<result column="richtext" jdbcType="VARCHAR" property="richtext" />
 	</resultMap>
 	
 	<select id="getCaseList" resultMap="BaseResultMap">
@@ -26,10 +29,10 @@
 	</select>
 
 	<insert id="insertCase" parameterType="com.lensyn.gxpt.service.entity.Case" useGeneratedKeys="true" keyProperty="id">
-		insert into cases (name,
-		pic, url, type, address, content, location,coverage,height,finishtime,scale) VALUES (#{name}, #{pic}, #{url}, #{type},
+		insert into cases (name,title,subtitle,
+		pic, url, type, address, content, location,coverage,height,finishtime,scale,richtext) VALUES (#{name},#{title},#{subtitle}, #{pic}, #{url}, #{type},
 		#{
-		address}, #{content}, #{location}, #{coverage}, #{height}, #{finishtime}, #{scale})
+		address}, #{content}, #{location}, #{coverage}, #{height}, #{finishtime}, #{scale},#{richtext})
 	</insert>
 	
 	<delete id="delCase" parameterType="java.lang.String">
@@ -45,9 +48,9 @@
 	
 	<update id="updateCase" parameterType="com.lensyn.gxpt.service.entity.Case">
 		update cases set
-		name=#{name}, pic=#{pic}, url=#{url}, type=#{type},
+		name=#{name},title=#{title},subtitle=#{subtitle}, pic=#{pic}, url=#{url}, type=#{type},
 		address=#{
-		address}, content=#{content}, location=#{location}, coverage=#{coverage}, height=#{height}, finishtime=#{finishtime}, scale=#{scale} where id = #{id}
+		address}, content=#{content}, location=#{location}, coverage=#{coverage}, height=#{height}, finishtime=#{finishtime}, scale=#{scale} ,richtext=#{richtext} where id = #{id}
 	</update>
 	
 </mapper>

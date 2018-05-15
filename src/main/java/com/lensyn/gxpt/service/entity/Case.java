@@ -4,6 +4,9 @@ public class Case {
 	private Integer id;
 
 	private String name;
+	private String title;
+	private String subtitle;
+	private String richtext;
 
 	private String pic;
 
@@ -22,7 +25,7 @@ public class Case {
 	private String height;
 
 	private String finishtime;
-	
+
 	private String scale;
 
 	public Integer getId() {
@@ -39,6 +42,30 @@ public class Case {
 
 	public void setName(String name) {
 		this.name = name == null ? null : name.trim();
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getSubtitle() {
+		return subtitle;
+	}
+
+	public void setSubtitle(String subtitle) {
+		this.subtitle = subtitle;
+	}
+
+	public String getRichtext() {
+		return richtext;
+	}
+
+	public void setRichtext(String richtext) {
+		this.richtext = richtext;
 	}
 
 	public String getPic() {
