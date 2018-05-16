@@ -17,4 +17,6 @@ public interface CaseMapper {
 	
 	int getCaseCount(String type);
 
+	Case getCaseById(int id);
+
 }

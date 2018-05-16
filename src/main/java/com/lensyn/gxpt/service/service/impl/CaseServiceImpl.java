@@ -44,4 +44,10 @@ public class CaseServiceImpl implements CaseService {
 	public int getCaseCount(String type) {
 		return caseMapper.getCaseCount(type);
 	}
+
+	@Override
+	public Case getCaseById(int id) {
+		// TODO Auto-generated method stub
+		return caseMapper.getCaseById(id);
+	}
 }

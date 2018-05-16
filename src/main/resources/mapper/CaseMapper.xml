@@ -27,6 +27,13 @@
 		</if>
 		limit #{page}, 10
 	</select>
+	
+	<select id="getCaseById" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select * from cases
+			where
+			id = #{id}
+	</select>
 
 	<insert id="insertCase" parameterType="com.lensyn.gxpt.service.entity.Case" useGeneratedKeys="true" keyProperty="id">
 		insert into cases (name,title,subtitle,

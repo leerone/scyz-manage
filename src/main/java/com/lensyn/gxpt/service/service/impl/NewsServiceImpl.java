@@ -46,4 +46,10 @@ public class NewsServiceImpl implements NewsService {
 	public int getNewsCount(String type) {
 		return newsMapper.getNewsCount(type);
 	}
+
+	@Override
+	public News getNewsById(int id) {
+		// TODO Auto-generated method stub
+		return newsMapper.getNewsById(id);
+	}
 }

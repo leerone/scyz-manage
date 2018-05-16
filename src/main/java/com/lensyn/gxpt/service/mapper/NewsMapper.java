@@ -17,4 +17,6 @@ public interface NewsMapper {
 	
 	int getNewsCount(String type);
 
+	News getNewsById(int id);
+
 }

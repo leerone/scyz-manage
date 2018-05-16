@@ -66,4 +66,10 @@ public class NewsCtrl {
 		int newsCount = newsService.getNewsCount(type);
 		return newsCount;
 	}
+	
+	@RequestMapping(value = "/getNewsById")
+	public News getNewsById(int id) {
+		News news = newsService.getNewsById(id);
+		return news;
+	}
 }

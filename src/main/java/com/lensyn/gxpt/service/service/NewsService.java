@@ -15,4 +15,5 @@ public interface NewsService {
 	int delNews(String id);
 	int updateNews(News news);
 	int getNewsCount(String type);
+	News getNewsById(int id);
 }

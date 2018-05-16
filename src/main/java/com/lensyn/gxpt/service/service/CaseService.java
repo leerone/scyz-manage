@@ -15,4 +15,5 @@ public interface CaseService {
 	int delCase(String id);
 	int updateCase(Case cases);
 	int getCaseCount(String type);
+	Case getCaseById(int id);
 }

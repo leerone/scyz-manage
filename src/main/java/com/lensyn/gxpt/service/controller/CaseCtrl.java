@@ -77,4 +77,10 @@ public class CaseCtrl {
 		int count = caseService.getCaseCount(type);
 		return count;
 	}
+	
+	@RequestMapping(value = "/getCaseById")
+	public Case getCaseById(int id) {
+		Case cases = caseService.getCaseById(id);
+		return cases;
+	}
 }

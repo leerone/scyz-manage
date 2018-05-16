@@ -22,6 +22,14 @@
 		</if>
 		limit #{page},10
 	</select>
+	
+	<select id="getNewsById" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select * from news
+			where
+			id = #{id}
+	</select>
+	
 
 	<select id="getNewsCount" resultType="java.lang.Integer">
 		select count(1) from news
