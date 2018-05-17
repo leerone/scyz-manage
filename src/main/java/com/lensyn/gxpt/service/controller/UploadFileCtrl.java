@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import com.lensyn.gxpt.service.entity.Comment;
 import com.lensyn.gxpt.service.entity.UploadFile;
 import com.lensyn.gxpt.service.service.UploadFileService;
 
@@ -45,10 +46,54 @@ public class UploadFileCtrl {
 		map.put("type", "notimage");
 		return uploadFileService.getNotImageFileList(map);
 	}
-	
+
 	@RequestMapping(value = "/delFile")
 	public int delFile(String id) {
 		return uploadFileService.delFile(id);
+	}
+
+	/**
+	 * 评论list
+	 * 
+	 * @param fileid
+	 * @return
+	 */
+	@RequestMapping(value = "/getCommentList")
+	public List<Comment> getCommentList(String fileid) {
+		return uploadFileService.getCommentList(fileid);
+	}
+
+	/**
+	 * 评论list
+	 * 
+	 * @param fileid
+	 * @return
+	 */
+	@RequestMapping(value = "/insertComment")
+	public String insertComment(Comment comment) {
+		int commentid = uploadFileService.insertComment(comment);
+		Integer id = comment.getId();
+		if (id != null) {
+			return "1";
+		} else {
+			return "0";
+		}
+	}
+
+	/**
+	 * 评论list
+	 * 
+	 * @param fileid
+	 * @return
+	 */
+	@RequestMapping(value = "/delComment")
+	public String delComment(String id) {
+		int delComment = uploadFileService.delComment(id);
+		if (delComment > 0) {
+			return "1";
+		} else {
+			return "0";
+		}
 	}
 
 	@RequestMapping("/uploadimage")
@@ -124,9 +169,9 @@ public class UploadFileCtrl {
 						String fileName = multipartFile.getOriginalFilename();
 						if (fileName.trim() != null && fileName.trim().length() > 0) {
 							String url = "/usr/local/src/uploadfile/";
-//							String url = "D://";
+							// String url = "D://";
 							String tempname = new Date().getTime() + "=" + fileName;
-							
+
 							File file = new File(url, tempname);
 							try {
 								multipartFile.transferTo(file);
@@ -153,7 +198,7 @@ public class UploadFileCtrl {
 		}
 		return result;
 	}
-		
+
 	@RequestMapping("/tempimage")
 	public String tempFile(HttpServletRequest request, HttpServletResponse response) throws FileNotFoundException {
 		// String result = "error";
@@ -203,5 +248,5 @@ public class UploadFileCtrl {
 		}
 		return result;
 	}
-	
+
 }

@@ -9,6 +9,14 @@
 		<result column="fid" property="fid" jdbcType="VARCHAR" />
 
 	</resultMap>
+	
+	<resultMap id="CommentResultMap" type="com.lensyn.gxpt.service.entity.Comment">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="content" property="content" jdbcType="VARCHAR" />
+		<result column="fileid" property="fileid" jdbcType="VARCHAR" />
+	</resultMap>
+	
 
 	<select id="getFileList" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
@@ -43,5 +51,22 @@
 		delete from file where id =
 		#{id}
 	</delete>
-
+	
+	<!-- 评论 -->
+	
+	<select id="getCommentList" resultMap="CommentResultMap"
+		parameterType="java.lang.Integer">
+		select * from comment where fileid = #{fileid,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="delComment" parameterType="java.lang.String">
+		delete from comment where id =
+		#{id}
+	</delete>
+	
+	<insert id="insertComment" 
+		parameterType="com.lensyn.gxpt.service.entity.Comment" useGeneratedKeys="true" keyProperty="id">
+		insert into comment (content,time,fileid) values (#{content},#{time},#{fileid})
+	</insert>
+	
 </mapper>

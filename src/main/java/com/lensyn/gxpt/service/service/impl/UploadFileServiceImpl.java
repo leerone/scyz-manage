@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lensyn.gxpt.service.entity.Case;
+import com.lensyn.gxpt.service.entity.Comment;
 import com.lensyn.gxpt.service.entity.UploadFile;
 import com.lensyn.gxpt.service.mapper.UploadFileMapper;
 import com.lensyn.gxpt.service.service.UploadFileService;
@@ -45,13 +45,26 @@ public class UploadFileServiceImpl implements UploadFileService {
 
 	@Override
 	public int getFileCount(String type) {
-		// TODO Auto-generated method stub
 		return uploadFileMapper.getFileCount(type);
 	}
 
 	@Override
 	public int delFile(String id) {
-		// TODO Auto-generated method stub
 		return uploadFileMapper.delFile(id);
+	}
+
+	@Override
+	public List<Comment> getCommentList(String fileid) {
+		return uploadFileMapper.getCommentList(fileid);
+	}
+
+	@Override
+	public int insertComment(Comment comment) {
+		return uploadFileMapper.insertComment(comment);
+	}
+
+	@Override
+	public int delComment(String id) {
+		return uploadFileMapper.delComment(id);
 	}
 }
