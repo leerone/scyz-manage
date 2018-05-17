@@ -59,7 +59,7 @@ public class UploadFileCtrl {
 	 * @return
 	 */
 	@RequestMapping(value = "/getCommentList")
-	public List<Comment> getCommentList(String fileid) {
+	public List<Comment> getCommentList(Integer fileid) {
 		return uploadFileService.getCommentList(fileid);
 	}
 

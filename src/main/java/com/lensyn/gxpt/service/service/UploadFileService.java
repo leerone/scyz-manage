@@ -17,7 +17,7 @@ public interface UploadFileService {
 	List<UploadFile> getNotImageFileList(Map map);
 	int getFileCount(String type);
 	int delFile(String id);
-	List<Comment> getCommentList(String id);
+	List<Comment> getCommentList(Integer fileid);
 	int insertComment(Comment comment);
 	int delComment(String id);
 }

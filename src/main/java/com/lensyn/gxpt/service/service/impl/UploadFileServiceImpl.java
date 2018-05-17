@@ -54,7 +54,7 @@ public class UploadFileServiceImpl implements UploadFileService {
 	}
 
 	@Override
-	public List<Comment> getCommentList(String fileid) {
+	public List<Comment> getCommentList(Integer fileid) {
 		return uploadFileMapper.getCommentList(fileid);
 	}
 

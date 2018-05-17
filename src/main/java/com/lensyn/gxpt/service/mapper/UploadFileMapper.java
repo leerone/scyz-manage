@@ -20,7 +20,7 @@ public interface UploadFileMapper {
 
 	int delFile(String id);
 	
-	List<Comment> getCommentList(String fileid);
+	List<Comment> getCommentList(Integer fileid);
 	int insertComment(Comment comment);
 	int delComment(String id);
 }
