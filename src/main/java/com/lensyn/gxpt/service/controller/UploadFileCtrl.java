@@ -43,7 +43,7 @@ public class UploadFileCtrl {
 	public List<UploadFile> getNotImageFileList(String type, Integer page) {
 		Map map = new HashMap();
 		map.put("page", page - 1);
-		map.put("type", "notimage");
+		map.put("classify", "commfile");
 		return uploadFileService.getNotImageFileList(map);
 	}
 
@@ -178,7 +178,7 @@ public class UploadFileCtrl {
 								result = tempname;
 								UploadFile uploadFile = new UploadFile();
 								uploadFile.setName(tempname);
-								uploadFile.setUrl(url + tempname);
+								uploadFile.setUrl("http://47.106.177.128:16668/uploadfile/" + tempname);
 								uploadFile.setType(fileName.split("\\.")[1]);
 								uploadFileService.insertUploadFile(uploadFile);
 								// 拿到文件，存储

@@ -7,6 +7,7 @@
 		<result column="url" property="url" jdbcType="VARCHAR" />
 		<result column="type" property="type" jdbcType="VARCHAR" />
 		<result column="fid" property="fid" jdbcType="VARCHAR" />
+		<result column="classify" property="classify" jdbcType="VARCHAR" />
 
 	</resultMap>
 	
@@ -27,13 +28,13 @@
 		parameterType="java.util.Map">
 		select * from file
 		where
-		type != 'jpg' and type != 'png'
+		classify = #{classify}
 		limit #{page},10
 	</select>
 	
 	<insert id="insertUploadFile" 
 		parameterType="com.lensyn.gxpt.service.entity.UploadFile" useGeneratedKeys="true" keyProperty="id">
-		insert into file (name,url,type,fid) values (#{name},#{url},#{type},#{fid})
+		insert into file (name,url,type,fid,classify) values (#{name},#{url},#{type},#{fid},#{classify})
 	</insert>
 
 	<update id="updateUploadFile" parameterType="com.lensyn.gxpt.service.entity.UploadFile">
