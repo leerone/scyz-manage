@@ -6,6 +6,15 @@ public class Comment {
 	private String content;
 	private String time;
 	private String fileid;
+	private String ip;
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 
 	public Integer getId() {
 		return id;
