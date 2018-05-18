@@ -180,6 +180,7 @@ public class UploadFileCtrl {
 								uploadFile.setName(tempname);
 								uploadFile.setUrl("http://47.106.177.128:16668/uploadfile/" + tempname);
 								uploadFile.setType(fileName.split("\\.")[1]);
+								uploadFile.setClassify("commfile");
 								uploadFileService.insertUploadFile(uploadFile);
 								// 拿到文件，存储
 								// result = "success";
