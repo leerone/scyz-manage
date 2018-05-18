@@ -9,6 +9,8 @@ public class Hr {
 
 	private String type;
 
+	private String jobtime;
+
 	private String address;
 
 	private String description;
@@ -89,5 +91,13 @@ public class Hr {
 
 	public void setDesc2(String desc2) {
 		this.desc2 = desc2 == null ? null : desc2.trim();
+	}
+
+	public String getJobtime() {
+		return jobtime;
+	}
+
+	public void setJobtime(String jobtime) {
+		this.jobtime = jobtime;
 	}
 }
