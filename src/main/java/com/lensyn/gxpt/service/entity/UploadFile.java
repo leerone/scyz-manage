@@ -7,6 +7,7 @@ public class UploadFile {
 	private String type;
 	private String fid;
 	private String classify;
+	private String time;
 	
 	public String getClassify() {
 		return classify;
@@ -43,5 +44,11 @@ public class UploadFile {
 	}
 	public void setFid(String fid) {
 		this.fid = fid;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 }	
