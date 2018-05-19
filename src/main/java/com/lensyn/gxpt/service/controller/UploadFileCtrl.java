@@ -119,7 +119,7 @@ public class UploadFileCtrl {
 						String fileName = multipartFile.getOriginalFilename();
 						if (fileName.trim() != null && fileName.trim().length() > 0) {
 							String url = "/usr/local/src/uploadimage/";
-							String tempname = new Date().getTime() + "=" + fileName;
+							String tempname = new Date().getTime() + fileName;
 							File file = new File(url, tempname);
 							try {
 								multipartFile.transferTo(file);
@@ -170,7 +170,7 @@ public class UploadFileCtrl {
 						if (fileName.trim() != null && fileName.trim().length() > 0) {
 							String url = "/usr/local/src/uploadfile/";
 							// String url = "D://";
-							String tempname = new Date().getTime() + "=" + fileName;
+							String tempname = new Date().getTime() + fileName;
 
 							File file = new File(url, tempname);
 							try {
@@ -224,7 +224,7 @@ public class UploadFileCtrl {
 						String fileName = multipartFile.getOriginalFilename();
 						if (fileName.trim() != null && fileName.trim().length() > 0) {
 							String url = "/usr/local/src/tempimage/";
-							String tempname = new Date().getTime() + "=" + fileName;
+							String tempname = new Date().getTime() + fileName;
 							File file = new File(url, tempname);
 							try {
 								multipartFile.transferTo(file);
