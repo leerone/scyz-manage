@@ -1,8 +1,11 @@
 package com.lensyn.gxpt.service.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -146,6 +149,7 @@ public class UploadFileCtrl {
 		return result;
 	}
 
+	@SuppressWarnings("resource")
 	@RequestMapping("/uploadfile")
 	public String document(HttpServletRequest request, HttpServletResponse response) throws FileNotFoundException {
 		// String result = "error";
@@ -167,19 +171,36 @@ public class UploadFileCtrl {
 					if (multipartFile != null) {
 						// 取得当前上传文件的文件名称
 						String fileName = multipartFile.getOriginalFilename();
+						String filetype = "";
+						if(fileName.contains(".")){
+							filetype = fileName.split("\\.")[1];
+						}
+						
 						if (fileName.trim() != null && fileName.trim().length() > 0) {
 							String url = "/usr/local/src/uploadfile/";
 							// String url = "D://";
-							String tempname = new Date().getTime() + fileName;
+							String tempname = new Date().getTime() + "."+filetype;
+							String cnname = fileName;
 
 							File file = new File(url, tempname);
+							File cnfile = new File(url,cnname);
+							FileChannel inputChannel = null;    
+					        FileChannel outputChannel = null;
 							try {
 								multipartFile.transferTo(file);
+						        
+					            inputChannel = new FileInputStream(url+tempname).getChannel();
+					            outputChannel = new FileOutputStream(url+cnname).getChannel();
+					            outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
+						            
+						        
+						        
 								result = tempname;
 								UploadFile uploadFile = new UploadFile();
-								uploadFile.setName(tempname);
+								uploadFile.setName(cnname);
 								uploadFile.setUrl("http://47.106.177.128:16668/uploadfile/" + tempname);
-								uploadFile.setType(fileName.split("\\.")[1]);
+								uploadFile.setCnurl("http://47.106.177.128:16668/uploadfile/" + cnname);
+								uploadFile.setType(filetype);
 								uploadFile.setClassify("commfile");
 								uploadFile.setTime(new Date().toGMTString());
 								uploadFileService.insertUploadFile(uploadFile);
@@ -187,6 +208,9 @@ public class UploadFileCtrl {
 								// result = "success";
 							} catch (IllegalStateException | IOException e) {
 								e.printStackTrace();
+							}finally {
+								inputChannel.close();
+					            outputChannel.close();
 							}
 						}
 					}
@@ -194,7 +218,6 @@ public class UploadFileCtrl {
 			}
 		} catch (Exception e) {
 			result = "0";
-			throw e;
 		} finally {
 
 		}

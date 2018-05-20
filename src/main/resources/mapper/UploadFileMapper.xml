@@ -5,6 +5,7 @@
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="cnurl" property="cnurl" jdbcType="VARCHAR" />
 		<result column="type" property="type" jdbcType="VARCHAR" />
 		<result column="fid" property="fid" jdbcType="VARCHAR" />
 		<result column="classify" property="classify" jdbcType="VARCHAR" />
@@ -36,7 +37,7 @@
 	
 	<insert id="insertUploadFile" 
 		parameterType="com.lensyn.gxpt.service.entity.UploadFile" useGeneratedKeys="true" keyProperty="id">
-		insert into file (name,url,type,fid,classify,time) values (#{name},#{url},#{type},#{fid},#{classify},#{time})
+		insert into file (name,url,cnurl,type,fid,classify,time) values (#{name},#{url},#{cnurl},#{type},#{fid},#{classify},#{time})
 	</insert>
 
 	<update id="updateUploadFile" parameterType="com.lensyn.gxpt.service.entity.UploadFile">
