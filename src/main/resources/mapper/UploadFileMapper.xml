@@ -15,9 +15,10 @@
 	
 	<resultMap id="CommentResultMap" type="com.lensyn.gxpt.service.entity.Comment">
 		<id column="id" property="id" jdbcType="INTEGER" />
-		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="nickname" property="nickname" jdbcType="VARCHAR" />
 		<result column="content" property="content" jdbcType="VARCHAR" />
 		<result column="fileid" property="fileid" jdbcType="VARCHAR" />
+		<result column="ip" property="ip" jdbcType="VARCHAR" />
 		<result column="ip" property="ip" jdbcType="VARCHAR" />
 	</resultMap>
 	
@@ -71,7 +72,7 @@
 	
 	<insert id="insertComment" 
 		parameterType="com.lensyn.gxpt.service.entity.Comment" useGeneratedKeys="true" keyProperty="id">
-		insert into comment (content,time,fileid, ip) values (#{content},#{time},#{fileid}, #{ip})
+		insert into comment (content,time,fileid, ip,nickname) values (#{content},#{time},#{fileid}, #{ip},#{nickname})
 	</insert>
 	
 </mapper>

@@ -103,6 +103,8 @@ public class UploadFileCtrl {
                 }  
             }  
         }  
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        comment.setTime(df.format(new Date()));
         comment.setIp(ip);
 		int commentid = uploadFileService.insertComment(comment);
 		Integer id = comment.getId();

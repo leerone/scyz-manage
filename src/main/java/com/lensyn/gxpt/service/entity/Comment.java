@@ -7,9 +7,18 @@ public class Comment {
 	private String time;
 	private String fileid;
 	private String ip;
+	private String nickname;
 
 	public String getIp() {
 		return ip;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public void setIp(String ip) {
