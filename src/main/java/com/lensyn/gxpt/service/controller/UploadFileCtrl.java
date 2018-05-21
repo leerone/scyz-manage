@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,6 +16,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -73,7 +75,35 @@ public class UploadFileCtrl {
 	 * @return
 	 */
 	@RequestMapping(value = "/insertComment")
-	public String insertComment(Comment comment) {
+	public String insertComment(Comment comment, HttpServletRequest request) {
+		String ip = request.getHeader("X-Forwarded-For");  
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+                ip = request.getHeader("Proxy-Client-IP");  
+            }  
+            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+                ip = request.getHeader("WL-Proxy-Client-IP");  
+            }  
+            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+                ip = request.getHeader("HTTP_CLIENT_IP");  
+            }  
+            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+                ip = request.getHeader("HTTP_X_FORWARDED_FOR");  
+            }  
+            if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+                ip = request.getRemoteAddr();  
+            }  
+        } else if (ip.length() > 15) {  
+            String[] ips = ip.split(",");  
+            for (int index = 0; index < ips.length; index++) {  
+                String strIp = (String) ips[index];  
+                if (!("unknown".equalsIgnoreCase(strIp))) {  
+                    ip = strIp;  
+                    break;  
+                }  
+            }  
+        }  
+        comment.setIp(ip);
 		int commentid = uploadFileService.insertComment(comment);
 		Integer id = comment.getId();
 		if (id != null) {
@@ -130,6 +160,8 @@ public class UploadFileCtrl {
 								UploadFile uploadFile = new UploadFile();
 								uploadFile.setName(tempname);
 								uploadFile.setUrl(url + tempname);
+								SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+								uploadFile.setTime(df.format(new Date()));
 								uploadFileService.insertUploadFile(uploadFile);
 								// 拿到文件，存储
 								// result = "success";
@@ -202,7 +234,8 @@ public class UploadFileCtrl {
 								uploadFile.setCnurl("http://47.106.177.128:16668/uploadfile/" + cnname);
 								uploadFile.setType(filetype);
 								uploadFile.setClassify("commfile");
-								uploadFile.setTime(new Date().toGMTString());
+								SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+								uploadFile.setTime(df.format(new Date()));
 								uploadFileService.insertUploadFile(uploadFile);
 								// 拿到文件，存储
 								// result = "success";
@@ -255,6 +288,8 @@ public class UploadFileCtrl {
 								UploadFile uploadFile = new UploadFile();
 								uploadFile.setName(tempname);
 								uploadFile.setUrl(url + tempname);
+								SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+								uploadFile.setTime(df.format(new Date()));
 								uploadFileService.insertUploadFile(uploadFile);
 								// 拿到文件，存储
 								// result = "success";

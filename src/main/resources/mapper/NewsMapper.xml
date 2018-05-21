@@ -20,7 +20,9 @@
 			where
 			type = #{type}
 		</if>
+		order by time desc
 		limit #{page},10
+		
 	</select>
 	
 	<select id="getNewsById" resultMap="BaseResultMap"

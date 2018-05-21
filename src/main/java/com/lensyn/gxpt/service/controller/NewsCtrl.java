@@ -1,5 +1,6 @@
 package com.lensyn.gxpt.service.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +31,8 @@ public class NewsCtrl {
 
 	@RequestMapping(value = "/insertNews", method = RequestMethod.POST)
 	public String insertNews(News news) {
-		news.setTime(new Date().toLocaleString());
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		news.setTime(df.format(new Date()));
 		newsService.insertNews(news);
 		Integer id = news.getId();
 		if (id != null) {

@@ -32,6 +32,7 @@
 		select * from file
 		where
 		classify = #{classify}
+		order by time desc
 		limit #{page},10
 	</select>
 	
