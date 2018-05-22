@@ -7,6 +7,7 @@ public class Case {
 	private String title;
 	private String subtitle;
 	private String richtext;
+	private String time;
 
 	private String pic;
 
@@ -27,6 +28,14 @@ public class Case {
 	private String finishtime;
 
 	private String scale;
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
 
 	public Integer getId() {
 		return id;

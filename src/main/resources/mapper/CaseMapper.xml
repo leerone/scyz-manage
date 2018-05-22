@@ -17,6 +17,7 @@
 		<result column="finishtime" jdbcType="VARCHAR" property="finishtime" />
 		<result column="scale" jdbcType="VARCHAR" property="scale" />
 		<result column="richtext" jdbcType="VARCHAR" property="richtext" />
+		<result column="time" jdbcType="VARCHAR" property="time" />
 	</resultMap>
 	
 	<select id="getCaseList" resultMap="BaseResultMap">
@@ -25,6 +26,7 @@
 			where
 			type = #{type}
 		</if>
+		order by time
 		limit #{page}, 10
 	</select>
 	

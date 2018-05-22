@@ -1,5 +1,7 @@
 package com.lensyn.gxpt.service.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,10 +35,11 @@ public class CaseCtrl {
 	
 	@RequestMapping(value = "/insertCase")
 	public String insertCases(Case cases) {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		cases.setTime(df.format(new Date()));
 		caseService.insertCase(cases);
 		Integer id = cases.getId();
 		if (id != null) {
-			System.out.println(cases.getUrl());
 			String type = cases.getType();
 			String[] urls = cases.getUrl().split(",");
 			UploadFile uploadFile = new UploadFile();
