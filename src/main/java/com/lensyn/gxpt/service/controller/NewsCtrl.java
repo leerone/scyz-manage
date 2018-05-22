@@ -44,7 +44,8 @@ public class NewsCtrl {
 	
 	@RequestMapping(value = "/updateNews", method = RequestMethod.POST)
 	public String updateNews(News news) {
-		news.setTime(new Date().toLocaleString());
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		news.setTime(df.format(new Date()));
 		Integer id = newsService.updateNews(news);
 		if (id != null) {
 			return "1";
