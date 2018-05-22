@@ -21,7 +21,9 @@
 			type = #{type}
 		</if>
 		order by time desc
-		limit #{page},10
+		<if test="_parameter.page != null and _parameter.page != '' ">
+			limit #{page}, 10
+		</if>
 		
 	</select>
 	

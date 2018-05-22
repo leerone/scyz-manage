@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,10 @@ public class HrCtrl {
 	@RequestMapping(value = "/getHrList")
 	public List<Hr> gethrList(String type,Integer page) {
 		Map map = new HashMap();
+		if(StringUtils.isEmpty(page)){
+			map.put("type", type);
+			return hrService.getHrList(map);
+		}
 		map.put("page", page-1);
 		map.put("type", type);
 		return hrService.getHrList(map);

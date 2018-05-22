@@ -20,7 +20,9 @@
 			where
 			type = #{type}
 		</if>
-		limit #{page}, 10
+		<if test="_parameter.page != null and _parameter.page != '' ">
+			limit #{page}, 10
+		</if>
 	</select>
 
 	<insert id="insertHr" parameterType="com.lensyn.gxpt.service.entity.Hr" useGeneratedKeys="true" keyProperty="id">

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +23,13 @@ public class NewsCtrl {
 
 	@RequestMapping(value = "/getNewsList")
 	public List<News> getNewsList(String type, String page) {
-		int newPage = (((Integer.valueOf(page) - 1) * 10));
 		Map<String, Object> map = new HashMap<String, Object>();
+		if(StringUtils.isEmpty(page)){
+			map.put("type", type);
+			return newsService.getNewsList(map);
+		}
+		int newPage = (((Integer.valueOf(page) - 1) * 10));
+		
 		map.put("type", type);
 		map.put("page", newPage);
 		return newsService.getNewsList(map);
