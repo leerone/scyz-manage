@@ -47,7 +47,11 @@ public class CaseServiceImpl implements CaseService {
 
 	@Override
 	public Case getCaseById(int id) {
-		// TODO Auto-generated method stub
 		return caseMapper.getCaseById(id);
+	}
+
+	@Override
+	public List<Case> getAll(Map map) {
+		return caseMapper.getAll(map);
 	}
 }

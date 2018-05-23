@@ -4,6 +4,7 @@ package com.lensyn.gxpt.service.service;
 import java.util.List;
 import java.util.Map;
 
+import com.lensyn.gxpt.service.entity.Case;
 import com.lensyn.gxpt.service.entity.News;
 
 /**
@@ -16,4 +17,5 @@ public interface NewsService {
 	int updateNews(News news);
 	int getNewsCount(String type);
 	News getNewsById(int id);
+	List<News> getAll(Map map);
 }

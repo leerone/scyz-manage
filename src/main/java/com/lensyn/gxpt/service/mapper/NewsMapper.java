@@ -19,4 +19,6 @@ public interface NewsMapper {
 
 	News getNewsById(int id);
 
+	List<News> getAll(Map map);
+
 }

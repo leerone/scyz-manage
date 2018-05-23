@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lensyn.gxpt.service.entity.Case;
 import com.lensyn.gxpt.service.entity.News;
 import com.lensyn.gxpt.service.service.NewsService;
 
@@ -24,21 +25,25 @@ public class NewsCtrl {
 	@RequestMapping(value = "/getNewsList")
 	public List<News> getNewsList(String type, String page) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		if(StringUtils.isEmpty(page)){
-			map.put("type", type);
-			return newsService.getNewsList(map);
-		}
 		int newPage = (((Integer.valueOf(page) - 1) * 10));
-		
 		map.put("type", type);
 		map.put("page", newPage);
 		return newsService.getNewsList(map);
 	}
+	
+	@RequestMapping(value = "/getAll")
+	public List<News> getAll(String type) {
+		Map map = new HashMap();
+		map.put("type", type);
+		return newsService.getAll(map);
+	}
 
 	@RequestMapping(value = "/insertNews", method = RequestMethod.POST)
 	public String insertNews(News news) {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-		news.setTime(df.format(new Date()));
+		if(StringUtils.isEmpty(news.getTime())){
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+			news.setTime(df.format(new Date()));
+		}
 		newsService.insertNews(news);
 		Integer id = news.getId();
 		if (id != null) {
@@ -50,8 +55,6 @@ public class NewsCtrl {
 	
 	@RequestMapping(value = "/updateNews", method = RequestMethod.POST)
 	public String updateNews(News news) {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-		news.setTime(df.format(new Date()));
 		Integer id = newsService.updateNews(news);
 		if (id != null) {
 			return "1";

@@ -29,13 +29,16 @@ public class CaseCtrl {
 	@RequestMapping(value = "/getCaseList")
 	public List<Case> getCasesList(String type,Integer page) {
 		Map map = new HashMap();
-		if(StringUtils.isEmpty(page)){
-			map.put("type", type);
-			return caseService.getCaseList(map);
-		}
 		map.put("page", page-1);
 		map.put("type", type);
 		return caseService.getCaseList(map);
+	}
+	
+	@RequestMapping(value = "/getAll")
+	public List<Case> getAll(String type) {
+		Map map = new HashMap();
+		map.put("type", type);
+		return caseService.getAll(map);
 	}
 	
 	@RequestMapping(value = "/insertCase")

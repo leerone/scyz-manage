@@ -52,4 +52,9 @@ public class NewsServiceImpl implements NewsService {
 		// TODO Auto-generated method stub
 		return newsMapper.getNewsById(id);
 	}
+
+	@Override
+	public List<News> getAll(Map map) {
+		return newsMapper.getAll(map);
+	}
 }
