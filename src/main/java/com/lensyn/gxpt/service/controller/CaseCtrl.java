@@ -27,10 +27,11 @@ public class CaseCtrl {
 	private UploadFileService uploadFileService;
 	
 	@RequestMapping(value = "/getCaseList")
-	public List<Case> getCasesList(String type,Integer page) {
+	public List<Case> getCasesList(String type, String subtype,Integer page) {
 		Map map = new HashMap();
 		map.put("page", page-1);
 		map.put("type", type);
+		map.put("subtype", subtype);
 		return caseService.getCaseList(map);
 	}
 	

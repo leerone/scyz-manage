@@ -22,10 +22,14 @@
 	</resultMap>
 	
 	<select id="getCaseList" resultMap="BaseResultMap">
-		select * from cases
+		select * from cases where 1=1
 		<if test="_parameter.type != null and _parameter.type != '' ">
-			where
+			and
 			type = #{type}
+		</if>
+		<if test="_parameter.subtype != null and _parameter.subtype != '' ">
+			and
+			subtype = #{subtype}
 		</if>
 		order by time
 		limit #{page}, 10
