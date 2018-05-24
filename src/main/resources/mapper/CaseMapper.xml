@@ -9,6 +9,7 @@
 		<result column="pic" jdbcType="VARCHAR" property="pic" />
 		<result column="url" jdbcType="VARCHAR" property="url" />
 		<result column="type" jdbcType="VARCHAR" property="type" />
+		<result column="subtype" jdbcType="VARCHAR" property="subtype" />
 		<result column="address" jdbcType="VARCHAR" property="address" />
 		<result column="content" jdbcType="VARCHAR" property="content" />
 		<result column="location" jdbcType="VARCHAR" property="location" />
@@ -50,7 +51,7 @@
 
 	<insert id="insertCase" parameterType="com.lensyn.gxpt.service.entity.Case" useGeneratedKeys="true" keyProperty="id">
 		insert into cases (name,title,subtitle,
-		pic, url, type, address, content, location,coverage,height,finishtime,scale,richtext) VALUES (#{name},#{title},#{subtitle}, #{pic}, #{url}, #{type},
+		pic, url, type,subtype, address, content, location,coverage,height,finishtime,scale,richtext) VALUES (#{name},#{title},#{subtitle}, #{pic}, #{url}, #{type},#{subtype},
 		#{
 		address}, #{content}, #{location}, #{coverage}, #{height}, #{finishtime}, #{scale},#{richtext})
 	</insert>
@@ -68,7 +69,7 @@
 	
 	<update id="updateCase" parameterType="com.lensyn.gxpt.service.entity.Case">
 		update cases set
-		name=#{name},title=#{title},subtitle=#{subtitle}, pic=#{pic}, url=#{url}, type=#{type},
+		name=#{name},title=#{title},subtitle=#{subtitle}, pic=#{pic}, url=#{url}, type=#{type},subtype=#{subtype},
 		address=#{
 		address}, content=#{content}, location=#{location}, coverage=#{coverage}, height=#{height}, finishtime=#{finishtime}, scale=#{scale} ,richtext=#{richtext} where id = #{id}
 	</update>

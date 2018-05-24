@@ -14,6 +14,7 @@ public class Case {
 	private String url;
 
 	private String type;
+	private String subtype;
 
 	private String address;
 
@@ -28,6 +29,14 @@ public class Case {
 	private String finishtime;
 
 	private String scale;
+
+	public String getSubtype() {
+		return subtype;
+	}
+
+	public void setSubtype(String subtype) {
+		this.subtype = subtype;
+	}
 
 	public String getTime() {
 		return time;
