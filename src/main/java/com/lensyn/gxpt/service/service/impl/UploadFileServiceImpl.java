@@ -67,4 +67,10 @@ public class UploadFileServiceImpl implements UploadFileService {
 	public int delComment(String id) {
 		return uploadFileMapper.delComment(id);
 	}
+
+	@Override
+	public List<UploadFile> getAll(Map map) {
+		// TODO Auto-generated method stub
+		return uploadFileMapper.getAll(map);
+	}
 }

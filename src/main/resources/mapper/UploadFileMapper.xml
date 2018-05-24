@@ -37,6 +37,14 @@
 		limit #{page},10
 	</select>
 	
+	<select id="getAll" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select * from file
+		where
+		classify = #{classify}
+		order by time desc
+	</select>
+	
 	<insert id="insertUploadFile" 
 		parameterType="com.lensyn.gxpt.service.entity.UploadFile" useGeneratedKeys="true" keyProperty="id">
 		insert into file (name,url,cnurl,type,fid,classify,time) values (#{name},#{url},#{cnurl},#{type},#{fid},#{classify},#{time})

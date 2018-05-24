@@ -46,4 +46,9 @@ public class HrServiceImpl implements HrService {
 	public int getHrCount(String type) {
 		return hrMapper.getHrCount(type);
 	}
+
+	@Override
+	public List<Hr> getAll(Map map) {
+		return hrMapper.getAll(map);
+	}
 }

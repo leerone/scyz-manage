@@ -20,8 +20,14 @@
 			where
 			type = #{type}
 		</if>
-		<if test="_parameter.page != null and _parameter.page != '' ">
-			limit #{page}, 10
+		limit #{page}, 10
+	</select>
+	
+	<select id="getAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select * from hr
+		<if test="_parameter.type != null and _parameter.type != '' ">
+			where
+			type = #{type}
 		</if>
 	</select>
 

@@ -20,4 +20,5 @@ public interface UploadFileService {
 	List<Comment> getCommentList(Integer fileid);
 	int insertComment(Comment comment);
 	int delComment(String id);
+	List<UploadFile> getAll(Map map);
 }

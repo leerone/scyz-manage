@@ -15,4 +15,5 @@ public interface HrService {
 	int delHr(String id);
 	int updateHr(Hr hr);
 	int getHrCount(String type);
+	List<Hr> getAll(Map map);
 }

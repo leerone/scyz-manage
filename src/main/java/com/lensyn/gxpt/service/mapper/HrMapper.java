@@ -17,4 +17,6 @@ public interface HrMapper {
 
 	int getHrCount(String type);
 
+	List<Hr> getAll(Map map);
+
 }

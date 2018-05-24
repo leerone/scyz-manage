@@ -22,13 +22,16 @@ public class HrCtrl {
 	@RequestMapping(value = "/getHrList")
 	public List<Hr> gethrList(String type,Integer page) {
 		Map map = new HashMap();
-		if(StringUtils.isEmpty(page)){
-			map.put("type", type);
-			return hrService.getHrList(map);
-		}
 		map.put("page", page-1);
 		map.put("type", type);
 		return hrService.getHrList(map);
+	}
+	
+	@RequestMapping(value = "/getAll")
+	public List<Hr> getAll(String type) {
+		Map map = new HashMap();
+		map.put("type", type);
+		return hrService.getAll(map);
 	}
 	
 	@RequestMapping(value = "/insertHr")

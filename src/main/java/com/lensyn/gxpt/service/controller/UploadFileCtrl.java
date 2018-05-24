@@ -51,6 +51,13 @@ public class UploadFileCtrl {
 		map.put("classify", "commfile");
 		return uploadFileService.getNotImageFileList(map);
 	}
+	
+	@RequestMapping(value = "/getAll")
+	public List<UploadFile> getAll(String type) {
+		Map map = new HashMap();
+		map.put("classify", "commfile");
+		return uploadFileService.getAll(map);
+	}
 
 	@RequestMapping(value = "/delFile")
 	public int delFile(String id) {
