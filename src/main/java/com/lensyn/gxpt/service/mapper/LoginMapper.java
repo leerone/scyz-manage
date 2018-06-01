@@ -4,4 +4,6 @@ import com.lensyn.gxpt.service.entity.User;
 
 public interface LoginMapper {
 	User login(User user);
+	
+	User getCurUser(String id);
 }

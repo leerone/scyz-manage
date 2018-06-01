@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lensyn.gxpt.service.mapper.AboutUsMapper">
+	<resultMap id="BaseResultMap" type="com.lensyn.gxpt.service.entity.AboutUs">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="type" jdbcType="VARCHAR" property="type" />
+		<result column="reference" jdbcType="VARCHAR" property="reference" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="time" jdbcType="VARCHAR" property="time" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+
+	</resultMap>
+
+	<select id="getAboutUsList" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select * from aboutus
+		<if test="_parameter.type != null and _parameter.type != '' ">
+			where
+			type = #{type}
+		</if>
+		order by time desc
+		limit #{page}, 10
+		
+	</select>
+	
+	<select id="getAboutUsById" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select * from aboutus
+			where
+			id = #{id}
+	</select>
+	
+
+	<select id="getAboutUsCount" resultType="java.lang.Integer">
+		select count(1) from aboutus
+		<if test="_parameter != null and _parameter != '' ">
+			where type = #{type}
+		</if>
+	</select>
+
+	<insert id="insertAboutUs" parameterType="com.lensyn.gxpt.service.entity.AboutUs"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into aboutus (
+		reference, type, title, time, content)
+		VALUES (#{reference}, #{type}, #{title}, #{time},
+		#{content})
+	</insert>
+
+	<delete id="delAboutUs" parameterType="java.lang.String">
+		delete from aboutus where id =
+		#{id}
+	</delete>
+
+	<update id="updateAboutUs" parameterType="com.lensyn.gxpt.service.entity.AboutUs">
+		update aboutus set
+		type=#{type}, title=#{title}, time=#{time}, content=#{content},
+		reference=#{reference} where id = #{id}
+	</update>
+
+</mapper>

@@ -18,4 +18,9 @@ public class LoginCtrl {
 	public User login(User user) {
 		return loginService.login(user);
 	}
+	
+	@RequestMapping(value = "/getCurUser")
+	public User getCurUser(String id) {
+		return loginService.getCurUser(id);
+	}
 }

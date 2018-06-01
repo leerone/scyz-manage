@@ -6,4 +6,5 @@ public interface LoginService {
 
 	User login(User user);
 	
+	User getCurUser(String id);
 }

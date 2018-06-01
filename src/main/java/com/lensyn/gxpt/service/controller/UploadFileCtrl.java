@@ -224,7 +224,7 @@ public class UploadFileCtrl {
 							String cnname = fileName;
 
 							File file = new File(url, tempname);
-							File cnfile = new File(url,cnname);
+							File cnfile = new File(url, cnname);
 							FileChannel inputChannel = null;    
 					        FileChannel outputChannel = null;
 							try {
@@ -233,8 +233,6 @@ public class UploadFileCtrl {
 					            inputChannel = new FileInputStream(url+tempname).getChannel();
 					            outputChannel = new FileOutputStream(url+cnname).getChannel();
 					            outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
-						            
-						        
 						        
 								result = tempname;
 								UploadFile uploadFile = new UploadFile();

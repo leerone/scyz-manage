@@ -5,11 +5,16 @@
 		<id column="id" jdbcType="INTEGER" property="id" />
 		<result column="username" jdbcType="VARCHAR" property="username" />
 		<result column="password" jdbcType="VARCHAR" property="password" />
+		<result column="role" jdbcType="VARCHAR" property="role" />
 	</resultMap>
 	
 	<select id="login" resultMap="BaseResultMap" parameterType="com.lensyn.gxpt.service.entity.User">
 		select * from user
 		where username=#{username} and password = #{password}
+	</select>
+	
+	<select id="getCurUser" resultMap="BaseResultMap" parameterType="com.lensyn.gxpt.service.entity.User">
+		select * from user where id=#{id}
 	</select>
 	
 </mapper>
